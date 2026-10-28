@@ -1,8 +1,10 @@
 # Three abaplint checks on every pull request. Copy this folder into an abapGit repository
 # (sources under src/) and keep the configs you need:
 #
-# syntax-740   abaplint-syntax.json: syntax of the lowest release you support (v740sp08 here).
-#              Catches statements a newer development system accepts but the target does not.
+# syntax       the syntax config of the lowest release you support: set SYNTAX_CONFIG and
+#              SYNTAX_LABEL in the job's env (abaplint-syntax.json = 7.40 SP08,
+#              abaplint-syntax-750.json, abaplint-syntax-752.json). Catches statements a newer
+#              development system accepts but the target does not.
 # abap-cloud   abaplint-cloud.json: ABAP Cloud language version; SAP objects allowed are the ones
 #              released in ABAP Cloud AND present on 7.40
 #              (https://github.com/abapedia/steampunk-2305-api-intersect-740). Delete the job if
@@ -20,18 +22,21 @@ permissions:
   contents: read
 
 jobs:
-  syntax-740:
+  syntax:
     runs-on: ubuntu-latest
+    env:
+      SYNTAX_CONFIG: abaplint-syntax.json   # or abaplint-syntax-750.json / abaplint-syntax-752.json
+      SYNTAX_LABEL: ABAP 7.40 SP08          # shown on the annotations; match the config
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: abaplint, ABAP 7.40 SP08
+      - name: abaplint, ${{ env.SYNTAX_LABEL }}
         run: |
           if [ -z "$(find src -type f 2>/dev/null | head -1)" ]; then echo "No sources yet."; exit 0; fi
-          npx --yes @abaplint/cli@2.120.90 abaplint-syntax.json --format json > abaplint-result.json || true
-          node .github/abaplint-annotate.js abaplint-result.json "abaplint 7.40"
+          npx --yes @abaplint/cli@2.120.67 "$SYNTAX_CONFIG" --format json > abaplint-result.json || true
+          node .github/abaplint-annotate.js abaplint-result.json "abaplint $SYNTAX_LABEL"
 
   abap-cloud:
     runs-on: ubuntu-latest
@@ -43,7 +48,7 @@ jobs:
       - name: abaplint, ABAP Cloud
         run: |
           if [ -z "$(find src -type f 2>/dev/null | head -1)" ]; then echo "No sources yet."; exit 0; fi
-          npx --yes @abaplint/cli@2.120.90 abaplint-cloud.json --format json > abaplint-result-cloud.json || true
+          npx --yes @abaplint/cli@2.120.67 abaplint-cloud.json --format json > abaplint-result-cloud.json || true
           node .github/abaplint-annotate.js abaplint-result-cloud.json "abaplint ABAP Cloud"
 
   clean-abap:
@@ -56,5 +61,5 @@ jobs:
       - name: abaplint, Clean ABAP
         run: |
           if [ -z "$(find src -type f 2>/dev/null | head -1)" ]; then echo "No sources yet."; exit 0; fi
-          npx --yes @abaplint/cli@2.120.90 abaplint-clean.json --format json > abaplint-result-clean.json || true
+          npx --yes @abaplint/cli@2.120.67 abaplint-clean.json --format json > abaplint-result-clean.json || true
           node .github/abaplint-annotate.js abaplint-result-clean.json "abaplint Clean ABAP"
