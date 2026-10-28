@@ -62,3 +62,28 @@ Cloudification Repository). Not released: look for the successor it prints, or `
 - Do not suppress clean core findings with pseudo-comments; fix or document a wrapper.
 
 Sources: `SOURCES.md` (Cloudification Repository, SAP clean core guidance, RAP reference scenario).
+
+## CDS and RAP in practice (seen on S/4HANA releases; check on yours)
+- **Released means `#PUBLIC_API` for custom code.** Views classified for local use only
+  (`PUBLIC_LOCAL_API`) and DDIC tables are blocked in ABAP Cloud objects ("use of CDS entity ... is
+  not permitted"), sometimes per element or per association of an otherwise usable view. Check
+  with `released-api.py`; the syntax check does not always catch it, activation does.
+- **No `true` / `false` literals** in some view-entity releases: use
+  `cast( case when <cond> then 'X' else ' ' end as abap_boolean )`.
+- **Authorization in the save phase.** A validation that reads a CDS view with access control (for
+  example `I_Product`) dumps with `BEHAVIOR_ILLEGAL_STATEMENT` ("AUTHORITY-CHECK(DCL) is not allowed
+  with this status"). Read reference data `WITH PRIVILEGED ACCESS`; put `#CHECK` and the DCL on the
+  projection views, `#NOT_REQUIRED` on the BO's interface views.
+- **Calculated elements in a draft BO** are read from the draft table while editing, not computed:
+  set them in the determination that changes their source field.
+- **Projection views** cannot select fields through an association they define themselves: define
+  the association in the interface view and follow the path in the projection.
+- **OData bindings** reject non-standard conversion exits on exposed fields (`ALPHA` is fine): cast
+  the field to a plain type.
+- **Released RAP BOs check every key in `%target`.** In `CREATE BY \_child`, fill the child's full
+  key (including the parent key) in each `%target` line, not only `%tky` of the parent.
+- **Fiori Elements V4 list-report tabs** ignore `@UI.selectionVariant` `filter` and CDS parameters
+  for per-tab filtering, and CDS cannot emit `SelectOptions` on some releases: define the
+  `UI.SelectionVariant` with `SelectOptions` in the app's local `annotation.xml` (same term and
+  qualifier), keep the `SelectionPresentationVariant` in the metadata extension.
+- **VDM layering:** a `#BASIC` view must not select from a `#COMPOSITE` view.
