@@ -21,10 +21,12 @@ every prompt, with guardrails it cannot skip.
 
 ## Why
 
-AI assistants write ABAP that compiles and still fails review: `SELECT *` on SAP tables in cloud
-code, no `AUTHORITY-CHECK`, `sy-subrc` read after a functional call, no tests, syntax that does not
-exist on 7.40. This kit gives your assistant the standards a senior ABAP developer applies without
-thinking, and checks it cannot talk its way around.
+AI assistants write ABAP that compiles and still fails review: `SELECT` on `MARA` in a classic
+package (it activates, and quietly makes the extension clean core level C), no `AUTHORITY-CHECK`,
+`sy-subrc` read after a functional call, no tests, syntax that does not exist on the 7.40 system it
+has to run on. In ABAP Cloud packages the compiler stops the worst of it, and the assistant spends
+rounds guessing the released API instead. This kit gives your assistant the standards a senior ABAP
+developer applies without thinking, and checks it cannot talk its way around.
 
 ## What changes when the kit is installed
 
