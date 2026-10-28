@@ -31,7 +31,7 @@ thinking, and checks it cannot talk its way around.
 |---|---|---|
 | You ask for new code on S/4HANA 2022+ | Writes **ABAP for Cloud Development** (level A) and checks every SAP object it uses; classic only through a documented wrapper | rule + `released-api.py` |
 | It wants to read `MARA` | Finds out it is level C and uses the released successor | `released-api.py` (below) |
-| You target 7.40 | Writes 7.40 syntax (no `ENUM`, no `RAISE EXCEPTION NEW`), cloud-ready style | `guidelines/abap/development.md`, abaplint 7.40 config |
+| You target 7.40 | Writes 7.40 syntax (no `ENUM`, no `RAISE EXCEPTION NEW`), cloud-ready style | `guidelines/abap/development.md`; optional check: abaplint 7.40 config (GitHub Action, `npx`, or ATC) |
 | A change is "done" | Only with ABAP Unit tests, test doubles for database / RFC / HTTP, checks green with real counts, and an independent review | definition of done |
 | You ask for a review | Findings ranked Blocker / Should fix / Nit, each with file, line and a concrete failure scenario; a read-only reviewer agent gives a second opinion | `abap-code-review` skill + agent, SAP's code review guide |
 | It is about to change a system marked read-only, or release a transport | **Blocked** or asks you first, whatever the model decides (Claude Code) | hook `sap-guard.py` |
@@ -46,6 +46,44 @@ BAPI_USER_GET_DETAIL [FUNC] state=classicAPI -> level B (SAP_BASIS BC-SEC-USR-AD
 RFC_READ_TABLE [FUNC] state=noAPI -> level D (SAP_BASIS BC-SEC-AIS-TOO)
 CL_ABAP_RANDOM_INT [CLAS] state=released -> level A (SAP_BASIS BC-ABA-LA)
 ```
+
+## How you use it
+
+You do not call the kit; you talk to your assistant as usual. The kit decides which rules,
+guidelines and skills apply to the prompt.
+
+**Every code change ends with the definition of done.** When you ask for new or changed ABAP, the
+assistant does not stop at "it compiles":
+
+```text
+design  ->  code  ->  ABAP Unit tests with test doubles  ->  checks  ->  independent review  ->  notes
+           (cloud first,   (happy path, negative cases,    (syntax, ATC,   (findings with file,     (what was
+            released APIs)  the bug as a failing test)       abaplint,      line and failure         learned, ticket
+                                                             real counts)   scenario; blockers       state)
+                                                                            fixed, checks re-run)
+```
+
+If a step cannot be done (no system access, legacy code without seams), the assistant says which
+and why instead of skipping it.
+
+**Example prompts and what happens:**
+
+| You write | What the kit makes the assistant do |
+|---|---|
+| *"Add a method that returns the open items of a customer"* | Designs behind an interface, writes the method for the project's release, adds ABAP Unit tests with a test double for the database access, runs the checks, then runs an independent review before calling it done |
+| *"Fix: the export dumps when the table is empty"* | Writes a failing test that reproduces the dump first, fixes it, shows the test passing, reviews the change |
+| *"Review this class"* / *"review my transport"* | Collects the change and its goal, checks facts on the system, hands the diff to the read-only `abap-reviewer` agent for a second opinion, reports Blocker / Should fix / Nit with file, line and a concrete failure scenario |
+| *"Can I use MARA / BAPI_USER_GET_DETAIL in ABAP Cloud?"* | Runs `released-api.py`: clean core level and the released successor (`I_PRODUCT`) |
+| *"Make this report ABAP Cloud ready"* | Uses `abap-cloud-migration`: finds unreleased objects, proposes released replacements or a documented wrapper |
+| *"Refactor this method to Clean ABAP"* | Pins the current behaviour with tests first, changes one thing per pass, asks before anything that could change behaviour |
+| *"Write unit tests for ZCL_ORDER_SERVICE"* | Extracts seams (interfaces, constructor injection) where needed and writes tests with `cl_abap_testdouble` or local fakes on 7.40 SP08 |
+| *"Set up abaplint for this repository"* | Copies the configs from `templates/abaplint/` (7.40 syntax, ABAP Cloud, Clean ABAP) and the pull request workflow |
+| *"Start working on ticket ABC-123"* | Reads the ticket, creates the branch with the key, records open points as linked tickets, reports done / partly / decision needed at the end (`work-tracking`) |
+| *"Investigate support case 0123456"* | Case folder, every attachment read, known issues searched, root cause with evidence, answer drafted for your approval (`support-case`) |
+
+In Claude Code the independent review runs as a separate read-only agent; in Copilot and Codex
+the assistant runs the same checklist itself. The read-only system and secret guards are Claude
+Code hooks (plus a git pre-push hook for the secret scan).
 
 ## Quickstart (Windows, 2 minutes)
 
