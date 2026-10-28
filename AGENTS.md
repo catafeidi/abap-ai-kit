@@ -59,7 +59,8 @@ relative to the kit root.
 Skills in `skills/` (SKILL.md format) hold the long references: `clean-abap` (full SAP Clean ABAP
 guide), `abap-code-review`, `sap-abap` (cheat sheets: `references/cheat-sheets/INDEX.md`),
 `sap-abap-cds`, `sap-api-style`, `sapui5*`, `sap-fiori-tools`, `sap-cap-capire`, and the workflow skills `work-tracking`,
-`find-information` and `support-case`.
+`find-information`, `support-case` and `spec-intake` (Word specification to Markdown,
+without struck-through text, with the reviewers' comments).
 
 ## Project layer (the more specific layer wins)
 

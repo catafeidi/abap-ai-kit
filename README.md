@@ -79,6 +79,7 @@ and why instead of skipping it.
 | *"Write unit tests for ZCL_ORDER_SERVICE"* | Extracts seams (interfaces, constructor injection) where needed and writes tests with `cl_abap_testdouble` or local fakes on 7.40 SP08 |
 | *"Set up abaplint for this repository"* | Copies the configs from `templates/abaplint/` (7.40 syntax, ABAP Cloud, Clean ABAP) and the pull request workflow |
 | *"Start working on ticket ABC-123"* | Reads the ticket, creates the branch with the key, records open points as linked tickets, reports done / partly / decision needed at the end (`work-tracking`) |
+| *"Read this spec and tell me what to build"* (a .docx) | Converts it without struck-through text and with the reviewers' comments, files it in the topic folder, lists objects and open questions, maps it to the tickets and proposes missing tasks (`spec-intake`) |
 | *"Investigate support case 0123456"* | Case folder, every attachment read, known issues searched, root cause with evidence, answer drafted for your approval (`support-case`) |
 
 In Claude Code the independent review runs as a separate read-only agent; in Copilot and Codex
@@ -151,10 +152,10 @@ project `AGENTS.md`, its MCP servers and its notes.
 | `rules/` | Short always-on rules: security, decisions, estimation, model choice, sessions and notes, work tracking | Always |
 | `guidelines/abap/` | development (cloud first, definition of done), clean-abap, code-review, unit-testing, architecture, security, abap-cloud, sap-systems, adt-vscode-setup | By task |
 | `guidelines/` | notes (project folder structure), adopt-project (bring existing work into a project), integrations (GitHub / Azure DevOps, Jira / Azure Boards, Confluence, CI, Salesforce) | By task |
-| `skills/` | `clean-abap`, `abap-code-review`, `abap-cloud`, `atc-cloudification`, `abap-cloud-migration`, `sap-abap` (37 SAP cheat sheets), `sap-abap-cds`, `sapui5*`, `sap-fiori-tools`, `sap-cap-capire`, `sap-api-style`, `work-tracking`, `find-information`, `support-case` | When the prompt matches |
+| `skills/` | `clean-abap`, `abap-code-review`, `abap-cloud`, `atc-cloudification`, `abap-cloud-migration`, `sap-abap` (37 SAP cheat sheets), `sap-abap-cds`, `sapui5*`, `sap-fiori-tools`, `sap-cap-capire`, `sap-api-style`, `work-tracking`, `find-information`, `support-case`, `spec-intake` | When the prompt matches |
 | `agents/abap-reviewer.md` | Read-only independent reviewer | On demand (Claude Code) |
 | `hooks/` | Guards: `rm -rf`, `.env` edits, injection shapes, gitleaks before push, read-only SAP systems, transport releases (with tests) | Every tool call |
-| `scripts/` | `install.ps1`, `new-project.ps1`, `adt-vscode/setup_adt_vscode.py`, `setup-integrations.py`, `abap/released-api.py`, `update-references.py` | By you |
+| `scripts/` | `install.ps1`, `new-project.ps1`, `adt-vscode/setup_adt_vscode.py`, `setup-integrations.py`, `abap/released-api.py`, `docs/docx_to_md.py`, `update-references.py` | By you |
 | `templates/` | Project skeleton, abaplint configs (7.40, ABAP Cloud, Clean ABAP + GitHub workflow), settings example | By scripts |
 
 Skills load when your prompt matches their description, so they cost nothing until needed.
