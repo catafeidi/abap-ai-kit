@@ -13,9 +13,12 @@ Applies to every ABAP project. Review points are repeated in `code-review.md` (S
 
 ## Authorization
 - Every entry point (RFC, HTTP handler, report, RAP action) checks authority before it reads or
-  changes data: `AUTHORITY-CHECK OBJECT ...` (classic) or `cl_abap_authorization` / CDS access
-  control and RAP authorization (ABAP Cloud). Evaluate `sy-subrc` right after the check; a missing
-  check of `sy-subrc` is a defect.
+  changes data with `AUTHORITY-CHECK OBJECT ...`. Evaluate `sy-subrc` right after the check; a
+  missing check of `sy-subrc` is a defect.
+- ABAP for Cloud Development: `AUTHORITY-CHECK OBJECT` is allowed, with the object name as a
+  literal and no `FOR USER` (current user only). Prefer the declarative checks: CDS access control
+  (CDS roles) for reads through CDS views, RAP authorization control in the behavior definition
+  for RAP business objects (cheat sheet `25_Authorization_Checks`).
 - Check with the activity actually performed (`ACTVT` 03 for display, 02 change, 01 create, 06
   delete); `DUMMY` only where the field really does not matter.
 - `CLIENT SPECIFIED` / `USING CLIENT` only with a documented reason; never let input choose the
