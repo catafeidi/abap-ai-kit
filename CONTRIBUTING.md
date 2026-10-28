@@ -27,7 +27,6 @@ attention, so a change must earn its place.
 
 ## Good first contributions
 - `install.sh` for macOS / Linux (same steps as `install.ps1`, symlinks instead of junctions).
-- abaplint configurations for 7.50 and 7.52 in `templates/abaplint/`.
 - A tested Azure DevOps or GitLab adapter in `guidelines/integrations.md` and
   `scripts/setup-integrations.py`.
 - Before / after examples from real reviews (anonymised) in a new `examples/` folder.
