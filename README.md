@@ -1,4 +1,4 @@
-<p align="center"><img src=".github/assets/hero.jpg" alt="ABAP AI Kit: make Claude, Copilot and Codex write ABAP like a senior developer" width="100%"></p>
+<p align="center"><img src=".github/assets/hero.jpg" alt="ABAP AI Kit: make Claude, Copilot and Codex write ABAP and Fiori like a senior SAP developer" width="100%"></p>
 
 <h1 align="center">ABAP AI Kit</h1>
 
