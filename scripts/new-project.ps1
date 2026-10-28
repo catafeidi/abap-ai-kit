@@ -8,11 +8,13 @@
 #>
 param(
     [Parameter(Mandatory = $true)][string]$Name,
-    [string]$Parent = (Split-Path -Parent $PSScriptRoot)
+    [string]$Parent
 )
 
 $ErrorActionPreference = 'Stop'
+# Windows PowerShell 5.1 leaves $PSScriptRoot empty inside param() defaults; resolve it here
 $Kit = Split-Path -Parent $PSScriptRoot
+if (-not $Parent) { $Parent = $Kit }
 $Template = "$Kit\templates\project"
 $Target = Join-Path $Parent $Name
 
