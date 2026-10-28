@@ -102,6 +102,16 @@ try:
     top = subprocess.run(["git", "rev-parse", "--show-toplevel"], capture_output=True, text=True,
                          timeout=10, cwd=cwd).stdout.strip()
     internal = os.path.join(top, "local", "gitleaks-internal.toml") if top else ""
+    # Any other clone of the kit (for example a temporary one) uses the overlay of the installed
+    # kit (AI_KIT_HOME), recognised by the same origin URL.
+    kit_home = os.environ.get("AI_KIT_HOME", "")
+    kit_rule = os.path.join(kit_home, "local", "gitleaks-internal.toml") if kit_home else ""
+    if top and not os.path.isfile(internal) and kit_rule and os.path.isfile(kit_rule):
+        def origin(path):
+            return subprocess.run(["git", "remote", "get-url", "origin"], capture_output=True, text=True,
+                                  timeout=10, cwd=path).stdout.strip().lower().removesuffix(".git")
+        if origin(top) and origin(top) == origin(kit_home):
+            internal = kit_rule
     if res.returncode == 0 and internal and os.path.isfile(internal):
         res = subprocess.run(gitleaks_cmd + ["--config", internal], capture_output=True, text=True,
                              timeout=45, cwd=cwd)
