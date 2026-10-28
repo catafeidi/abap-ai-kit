@@ -30,7 +30,7 @@ jobs:
       - name: abaplint, ABAP 7.40 SP08
         run: |
           if [ -z "$(find src -type f 2>/dev/null | head -1)" ]; then echo "No sources yet."; exit 0; fi
-          npx --yes @abaplint/cli@2.120.67 abaplint-syntax.json --format json > abaplint-result.json || true
+          npx --yes @abaplint/cli@2.120.90 abaplint-syntax.json --format json > abaplint-result.json || true
           node .github/abaplint-annotate.js abaplint-result.json "abaplint 7.40"
 
   abap-cloud:
@@ -43,7 +43,7 @@ jobs:
       - name: abaplint, ABAP Cloud
         run: |
           if [ -z "$(find src -type f 2>/dev/null | head -1)" ]; then echo "No sources yet."; exit 0; fi
-          npx --yes @abaplint/cli@2.120.67 abaplint-cloud.json --format json > abaplint-result-cloud.json || true
+          npx --yes @abaplint/cli@2.120.90 abaplint-cloud.json --format json > abaplint-result-cloud.json || true
           node .github/abaplint-annotate.js abaplint-result-cloud.json "abaplint ABAP Cloud"
 
   clean-abap:
@@ -56,5 +56,5 @@ jobs:
       - name: abaplint, Clean ABAP
         run: |
           if [ -z "$(find src -type f 2>/dev/null | head -1)" ]; then echo "No sources yet."; exit 0; fi
-          npx --yes @abaplint/cli@2.120.67 abaplint-clean.json --format json > abaplint-result-clean.json || true
+          npx --yes @abaplint/cli@2.120.90 abaplint-clean.json --format json > abaplint-result-clean.json || true
           node .github/abaplint-annotate.js abaplint-result-clean.json "abaplint Clean ABAP"

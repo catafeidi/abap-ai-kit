@@ -214,7 +214,7 @@ your employer and customers, so they can never be pushed). `install.ps1` picks t
 ## Contributing
 
 Ideas, fixes and new skills are welcome: see [CONTRIBUTING.md](CONTRIBUTING.md). Good first
-contributions: a macOS / Linux `install.sh`, an abaplint config for 7.50 / 7.52, a tested Azure
+contributions: a macOS / Linux `install.sh`, a tested Azure
 DevOps or GitLab adapter, before/after examples from real reviews.
 
 ## Licence
