@@ -1,6 +1,7 @@
 # Third-party notices
 
-The kit's own files are MIT (see `LICENSE`). The material below is copied from other projects and
+`LICENSE` (MIT) covers the kit's own files: instructions, guidelines, rules, hooks, scripts,
+templates and the skills written for the kit. The material below is copied from other projects and
 keeps its licence. Exact source commits: `SOURCES.json`.
 
 | Material | Location in the kit | Source | Licence | Licence text |

@@ -1,10 +1,6 @@
 MIT License
 
-Copyright (c) 2026 the kit author
-
-This licence covers the kit's own files (instructions, guidelines, rules, hooks, scripts,
-templates and the skills written for the kit). Third-party material keeps its own licence:
-see THIRD-PARTY-NOTICES.md and the LICENSE files inside the vendored skill folders.
+Copyright (c) 2026 abap-ai-kit contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
