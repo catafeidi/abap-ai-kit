@@ -180,6 +180,26 @@ licences and pinned commits: `SOURCES.md`, `THIRD-PARTY-NOTICES.md`, `SOURCES.js
 
 `python scripts/update-references.py` shows what changed upstream; `--apply` takes it.
 
+## Works with your tools
+
+Each project declares its platforms once in `integrations.json`; the skills `work-tracking`,
+`find-information` and `support-case` then use them. You log in yourself; no token goes into a
+file. Details and commands: `guidelines/integrations.md`; check a machine with
+`python scripts/setup-integrations.py --project <folder>`.
+
+| Area | Supported | Through |
+|---|---|---|
+| Code, pull requests | GitHub, Azure Repos, GitLab | `gh`, Azure DevOps MCP / `az repos`, `glab` |
+| Tickets, boards | Jira, Azure Boards, GitHub Issues | Atlassian MCP, Azure DevOps MCP / `az boards`, `gh` |
+| Wiki | Confluence, Azure DevOps Wiki | Atlassian MCP, Azure DevOps MCP |
+| CI | GitHub Actions, Azure Pipelines | `gh`, Azure DevOps MCP / `az pipelines` |
+| Test management | Azure Test Plans | Azure DevOps MCP |
+| Support cases (CRM) | Salesforce | `sf` CLI |
+| SAP systems | ADT for VS Code and its MCP server, or an ADT-based MCP server such as vsp | `guidelines/abap/adt-vscode-setup.md`; `sap-guard.py` blocks writes to read-only systems |
+
+Not built yet: Zephyr / Xray test management in Jira, SAP Cloud ALM, ServiceNow. Contributions
+welcome (`CONTRIBUTING.md`).
+
 ## Projects and personal settings
 
 Project folders sit next to the kit folders and stay out of its Git (whitelist `.gitignore`).
