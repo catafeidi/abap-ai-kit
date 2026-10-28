@@ -28,6 +28,26 @@ has to run on. In ABAP Cloud packages the compiler stops the worst of it, and th
 rounds guessing the released API instead. This kit gives your assistant the standards a senior ABAP
 developer applies without thinking, and checks it cannot talk its way around.
 
+## Built on
+
+The rules are the kit's own; the knowledge behind them comes from these sources (full list,
+licences and pinned commits: `SOURCES.md`, `THIRD-PARTY-NOTICES.md`, `SOURCES.json`):
+
+| Area | Source |
+|---|---|
+| Style | [Clean ABAP](https://github.com/SAP/styleguides) (SAP, CC-BY-3.0), vendored in full |
+| Code review | [SAP ABAP code review guide](https://github.com/SAP/styleguides/tree/main/abap-code-review) (SAP, CC-BY-3.0), vendored |
+| Language, OO, design patterns, RAP/EML, ABAP Cloud, unit tests | [SAP ABAP cheat sheets](https://github.com/SAP-samples/abap-cheat-sheets) (SAP, Apache-2.0), 37 sheets vendored |
+| Clean core levels A-D, released APIs | [SAP Cloudification Repository](https://github.com/SAP/abap-atc-cr-cv-s4hc) (queried live by `released-api.py`), [SAP clean core white paper](https://www.sap.com/documents/2024/09/20aece06-d87e-0010-bca6-c68f7e60039b.html) |
+| ABAP Cloud, ATC cloud readiness, migration | [likweitan/abap-skills](https://github.com/likweitan/abap-skills) (MIT): `abap-cloud`, `atc-cloudification`, `abap-cloud-migration` |
+| SAP development references (ABAP, CDS, UI5, Fiori, CAP, API style) | [secondsky/sap-skills](https://github.com/secondsky/sap-skills) (GPL-3.0) |
+| RAP architecture | [SAP Flight reference scenario](https://github.com/SAP-samples/abap-platform-refscen-flight), [RAP workshops](https://github.com/SAP-samples/abap-platform-rap-workshops) |
+| Object orientation | [SAP abap-oo-basics](https://github.com/SAP-samples/abap-oo-basics), [abap_oo_patterns](https://github.com/SchwarzIT/abap_oo_patterns) |
+| Static checks | [abaplint](https://github.com/abaplint/abaplint) (configs in `templates/abaplint/`), [code pal for ABAP](https://github.com/SAP/code-pal-for-abap) |
+| UI5 / Fiori | [UI5 official documentation](https://github.com/UI5/docs) (CC-BY-SA-4.0): best practices, performance checklist, CSP, security, accessibility, testing, vendored; [UI5 MCP server](https://github.com/UI5/mcp-server) and [Fiori MCP server](https://github.com/SAP/open-ux-tools/tree/main/packages/fiori-mcp-server), [UI5 linter](https://github.com/UI5/linter); [Fiori elements feature showcase](https://github.com/SAP-samples/abap-platform-fiori-feature-showcase); [Fiori design guidelines](https://experience.sap.com/fiori-design-web/) |
+
+`python scripts/update-references.py` shows what changed upstream; `--apply` takes it.
+
 ## What changes when the kit is installed
 
 | Situation | What the AI does with the kit | How |
@@ -168,26 +188,6 @@ project `AGENTS.md`, its MCP servers and its notes.
 | `templates/` | Project skeleton, abaplint configs (7.40, ABAP Cloud, Clean ABAP + GitHub workflow), settings example | By scripts |
 
 Skills load when your prompt matches their description, so they cost nothing until needed.
-
-## Built on
-
-The rules are the kit's own; the knowledge behind them comes from these sources (full list,
-licences and pinned commits: `SOURCES.md`, `THIRD-PARTY-NOTICES.md`, `SOURCES.json`):
-
-| Area | Source |
-|---|---|
-| Style | [Clean ABAP](https://github.com/SAP/styleguides) (SAP, CC-BY-3.0), vendored in full |
-| Code review | [SAP ABAP code review guide](https://github.com/SAP/styleguides/tree/main/abap-code-review) (SAP, CC-BY-3.0), vendored |
-| Language, OO, design patterns, RAP/EML, ABAP Cloud, unit tests | [SAP ABAP cheat sheets](https://github.com/SAP-samples/abap-cheat-sheets) (SAP, Apache-2.0), 37 sheets vendored |
-| Clean core levels A-D, released APIs | [SAP Cloudification Repository](https://github.com/SAP/abap-atc-cr-cv-s4hc) (queried live by `released-api.py`), [SAP clean core white paper](https://www.sap.com/documents/2024/09/20aece06-d87e-0010-bca6-c68f7e60039b.html) |
-| ABAP Cloud, ATC cloud readiness, migration | [likweitan/abap-skills](https://github.com/likweitan/abap-skills) (MIT): `abap-cloud`, `atc-cloudification`, `abap-cloud-migration` |
-| SAP development references (ABAP, CDS, UI5, Fiori, CAP, API style) | [secondsky/sap-skills](https://github.com/secondsky/sap-skills) (GPL-3.0) |
-| RAP architecture | [SAP Flight reference scenario](https://github.com/SAP-samples/abap-platform-refscen-flight), [RAP workshops](https://github.com/SAP-samples/abap-platform-rap-workshops) |
-| Object orientation | [SAP abap-oo-basics](https://github.com/SAP-samples/abap-oo-basics), [abap_oo_patterns](https://github.com/SchwarzIT/abap_oo_patterns) |
-| Static checks | [abaplint](https://github.com/abaplint/abaplint) (configs in `templates/abaplint/`), [code pal for ABAP](https://github.com/SAP/code-pal-for-abap) |
-| UI5 / Fiori | [UI5 official documentation](https://github.com/UI5/docs) (CC-BY-SA-4.0): best practices, performance checklist, CSP, security, accessibility, testing, vendored; [UI5 MCP server](https://github.com/UI5/mcp-server) and [Fiori MCP server](https://github.com/SAP/open-ux-tools/tree/main/packages/fiori-mcp-server), [UI5 linter](https://github.com/UI5/linter); [Fiori elements feature showcase](https://github.com/SAP-samples/abap-platform-fiori-feature-showcase); [Fiori design guidelines](https://experience.sap.com/fiori-design-web/) |
-
-`python scripts/update-references.py` shows what changed upstream; `--apply` takes it.
 
 ## Works with your tools
 
