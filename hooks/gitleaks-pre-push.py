@@ -97,6 +97,14 @@ if log_opts:
 
 try:
     res = subprocess.run(gitleaks_cmd, capture_output=True, text=True, timeout=45, cwd=cwd)
+    # A repository with a local internal-name rule (the kit's personal overlay, never committed):
+    # scan the same commits with it as well, so employer / customer names cannot be pushed.
+    top = subprocess.run(["git", "rev-parse", "--show-toplevel"], capture_output=True, text=True,
+                         timeout=10, cwd=cwd).stdout.strip()
+    internal = os.path.join(top, "local", "gitleaks-internal.toml") if top else ""
+    if res.returncode == 0 and internal and os.path.isfile(internal):
+        res = subprocess.run(gitleaks_cmd + ["--config", internal], capture_output=True, text=True,
+                             timeout=45, cwd=cwd)
 except FileNotFoundError:
     print(json.dumps({
         "hookSpecificOutput": {

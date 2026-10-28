@@ -23,6 +23,11 @@ def make_repo(content):
 
 
 clean = make_repo("hello\n")
+# a repository whose local overlay forbids the word "acme": a commit naming it must be refused
+internal_repo = make_repo("built for ACME corp\n")
+os.makedirs(os.path.join(internal_repo, "local"))
+with open(os.path.join(internal_repo, "local", "gitleaks-internal.toml"), "w") as handle:
+    handle.write('[extend]\nuseDefault = true\n[[rules]]\nid = "internal"\nregex = \'\'\'(?i)acme\'\'\'\n')
 # fake key assembled at run time, so this file itself does not trip the scanner
 leaky = make_repo("aws_access_key_id = " + "AKIA" + "Z7Q3" + "EXAMPLE4XYZW" + "\n"
                   + 'aws_secret_access_key = "' + "wJalrXUtnFEMI/K7MDENG/" + "bPxRfiCYzEXAMPLEKEY1" + '"\n')
@@ -37,6 +42,8 @@ CASES = [  # (command, working directory of the hook, expected decision)
     (f"cd {clean} && git push -f", leaky, "ask"),            # short force flag asks
     ("git push", leaky, "deny"),                             # no cd: the session folder is scanned
     ("git status", leaky, "allow"),                          # not a push
+    (f"cd {internal_repo} && git push", clean, "deny"),      # local internal-name rule applies
+    (f"cd {clean} && git push", internal_repo, "allow"),     # ... only in the repository that has it
 ]
 fails = 0
 for command, cwd, expected in CASES:
