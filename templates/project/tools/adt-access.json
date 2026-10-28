@@ -1,0 +1,6 @@
+{
+  "_why": "Object changes through the ADT MCP server only in these packages; destinations listed in readOnlyDestinations are blocked for the AI by the kit hook sap-guard.py.",
+  "port": 2236,
+  "packages": "Z*,Y*,$TMP",
+  "readOnlyDestinations": []
+}

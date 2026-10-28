@@ -1,0 +1,155 @@
+{
+  "_doc": "Vendored third-party material: where it comes from and which commit the kit copy matches. Human-readable list with the referenced (not copied) sources: SOURCES.md. Update: python scripts/update-references.py [--apply].",
+  "vendored": [
+    {
+      "name": "clean-abap-guide",
+      "repo": "https://github.com/SAP/styleguides",
+      "license": "CC-BY-3.0",
+      "ref": "42dee68d96f2724e6a7f9829a65ea1d080074f98",
+      "files": [
+        {
+          "from": "clean-abap/CleanABAP.md",
+          "to": "skills/clean-abap/reference/CleanABAP.md"
+        },
+        {
+          "from": "clean-abap/CleanABAP.md",
+          "to": "skills/sap-abap/references/clean-abap/CleanABAP.md"
+        },
+        {
+          "from": "abap-code-review/ABAPCodeReview.md",
+          "to": "skills/abap-code-review/reference/ABAPCodeReview.md"
+        },
+        {
+          "from": "LICENSES/CC-BY-3.0.txt",
+          "to": "skills/clean-abap/reference/LICENSE-CC-BY-3.0.txt"
+        },
+        {
+          "from": "LICENSES/CC-BY-3.0.txt",
+          "to": "skills/abap-code-review/reference/LICENSE-CC-BY-3.0.txt"
+        },
+        {
+          "from": "LICENSES/CC-BY-3.0.txt",
+          "to": "skills/sap-abap/references/clean-abap/LICENSE-CC-BY-3.0.txt"
+        }
+      ],
+      "updated": "2026-10-28"
+    },
+    {
+      "name": "abap-cheat-sheets",
+      "repo": "https://github.com/SAP-samples/abap-cheat-sheets",
+      "license": "Apache-2.0",
+      "ref": "7955c9146066ccd61171e6b5a81b511decad980a",
+      "dirs": [
+        {
+          "from": "",
+          "to": "skills/sap-abap/references/cheat-sheets",
+          "pattern": "^[0-9]{2}_.*\\.md$"
+        }
+      ],
+      "updated": "2026-10-28",
+      "files": [
+        {
+          "from": "LICENSE",
+          "to": "skills/sap-abap/references/cheat-sheets/LICENSE-APACHE-2.0.txt"
+        }
+      ]
+    },
+    {
+      "name": "sap-skills",
+      "repo": "https://github.com/secondsky/sap-skills",
+      "license": "GPL-3.0",
+      "ref": "652a861d3ed422b71f01c8805f9ec03b14017cd8",
+      "dirs": [
+        {
+          "from": "plugins/sap-abap/skills/sap-abap",
+          "to": "skills/sap-abap",
+          "keep": [
+            "references/cheat-sheets",
+            "references/clean-abap",
+            "LICENSE"
+          ]
+        },
+        {
+          "from": "plugins/sap-abap-cds/skills/sap-abap-cds",
+          "to": "skills/sap-abap-cds",
+          "keep": [
+            "LICENSE"
+          ]
+        },
+        {
+          "from": "plugins/sap-api-style/skills/sap-api-style",
+          "to": "skills/sap-api-style",
+          "keep": [
+            "LICENSE"
+          ]
+        },
+        {
+          "from": "plugins/sap-cap-capire/skills/sap-cap-capire",
+          "to": "skills/sap-cap-capire",
+          "keep": [
+            "LICENSE"
+          ]
+        },
+        {
+          "from": "plugins/sap-fiori-tools/skills/sap-fiori-tools",
+          "to": "skills/sap-fiori-tools",
+          "keep": [
+            "LICENSE"
+          ]
+        },
+        {
+          "from": "plugins/sapui5/skills/sapui5",
+          "to": "skills/sapui5",
+          "keep": [
+            "LICENSE"
+          ]
+        },
+        {
+          "from": "plugins/sapui5-cli/skills/sapui5-cli",
+          "to": "skills/sapui5-cli",
+          "keep": [
+            "LICENSE"
+          ]
+        },
+        {
+          "from": "plugins/sapui5-linter/skills/sapui5-linter",
+          "to": "skills/sapui5-linter",
+          "keep": [
+            "LICENSE"
+          ]
+        }
+      ],
+      "updated": "2026-10-28"
+    },
+    {
+      "name": "abap-skills",
+      "repo": "https://github.com/likweitan/abap-skills",
+      "license": "MIT",
+      "ref": "b034758c2acf0759cd0f6947b3d78e8c28a77c9d",
+      "dirs": [
+        {
+          "from": "skills/abap-cloud",
+          "to": "skills/abap-cloud",
+          "keep": [
+            "LICENSE"
+          ]
+        },
+        {
+          "from": "skills/abap-cloud-migration",
+          "to": "skills/abap-cloud-migration",
+          "keep": [
+            "LICENSE"
+          ]
+        },
+        {
+          "from": "skills/atc-cloudification",
+          "to": "skills/atc-cloudification",
+          "keep": [
+            "LICENSE"
+          ]
+        }
+      ],
+      "updated": "2026-10-28"
+    }
+  ]
+}

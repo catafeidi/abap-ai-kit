@@ -1,0 +1,14 @@
+# Kit secret scan: the default gitleaks rules plus a rule for your employer / customer internals,
+# so a project detail copied into a skill, script or guideline is caught before it is pushed.
+# Replace the example names with your own (company names, ticket key prefixes, internal hosts).
+[extend]
+useDefault = true
+
+[[rules]]
+id = "kit-internal-identifier"
+description = "Employer / customer internal identifier in the tool-neutral kit"
+regex = '''(?i)(example-company|example-customer|\bexample-\d+\b|internal\.example\.local)'''
+
+[allowlist]
+description = "this file names the patterns on purpose"
+paths = ['''^\.gitleaks\.toml$''']

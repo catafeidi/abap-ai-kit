@@ -1,0 +1,20 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      { "matcher": "", "hooks": [ { "type": "command", "command": "python ~/.claude/hooks/time-inject.py", "timeout": 5 } ] }
+    ],
+    "PreToolUse": [
+      { "matcher": "Edit|MultiEdit|Write",
+        "hooks": [ { "type": "command", "command": "python ~/.claude/hooks/block-env-edits.py", "timeout": 5 } ] },
+      { "matcher": "Bash|PowerShell",
+        "hooks": [
+          { "type": "command", "command": "python ~/.claude/hooks/block-rm-rf.py", "timeout": 5 },
+          { "type": "command", "command": "python ~/.claude/hooks/injection-guard.py", "timeout": 5 },
+          { "type": "command", "command": "python ~/.claude/hooks/gitleaks-pre-push.py", "timeout": 60 },
+          { "type": "command", "command": "python ~/.claude/hooks/sap-guard.py", "timeout": 5 }
+        ] },
+      { "matcher": "mcp__.*",
+        "hooks": [ { "type": "command", "command": "python ~/.claude/hooks/sap-guard.py", "timeout": 5 } ] }
+    ]
+  }
+}

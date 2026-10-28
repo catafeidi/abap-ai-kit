@@ -1,0 +1,32 @@
+# Whitelist: the kit repository holds only the folders below.
+# Every project folder next to them (one per project or customer) stays local,
+# so customer data, cases and project notes can never be pushed by accident.
+/*
+!/.gitignore
+!/.gitattributes
+!/.gitleaksignore
+!/.gitleaks.toml
+!/README.md
+!/SOURCES.md
+!/LICENSE
+!/THIRD-PARTY-NOTICES.md
+!/SOURCES.json
+!/AGENTS.md
+!/.github/
+!/claude/
+!/rules/
+!/guidelines/
+!/skills/
+!/agents/
+!/hooks/
+!/templates/
+!/scripts/
+
+# Never, even inside whitelisted folders
+.env
+.env.*
+*.pem
+*.key
+**/__pycache__/
+**/node_modules/
+**/.trash/

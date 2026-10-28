@@ -1,0 +1,19 @@
+{
+  "formatVersion": "1.0",
+  "destinations": [
+    {
+      "id": "DEV_100_{{SAP_USER}}_EN",
+      "protocol": "rfc",
+      "properties": {
+        "systemId": "DEV",
+        "ssoEnabled": "false",
+        "applicationServer": "dev.example.local",
+        "client": "100",
+        "systemNumber": "00",
+        "language": "EN",
+        "user": "{{SAP_USER}}",
+        "sncType": "0"
+      }
+    }
+  ]
+}

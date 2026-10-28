@@ -1,0 +1,34 @@
+{
+  "_doc": "Kit guidelines/integrations.md. Every block is optional; delete what the project does not use. No tokens or passwords here.",
+  "code": {
+    "type": "github",
+    "account": "<github login for this project>",
+    "org": "<organisation>",
+    "repos": ["<repo>"],
+    "rules": { "branch": "<ticket>-<short-slug>", "prTitle": "<ticket>: <summary>" }
+  },
+  "tracker": {
+    "type": "jira",
+    "site": "<site>.atlassian.net",
+    "cloudId": "<cloudId, setup-integrations prints how to get it>",
+    "project": "<KEY>",
+    "issueTypes": { "story": "<id>", "bug": "<id>", "spike": "<id>" },
+    "defaults": { "components": [], "fields": {} },
+    "fields": {},
+    "transitions": {},
+    "preferSkill": null,
+    "rules": { "weekdaysOnly": false, "board": "kanban" }
+  },
+  "wiki": { "type": "confluence", "site": "<site>.atlassian.net", "spaces": ["<SPACE>"], "rootPages": [] },
+  "ci": { "type": "github-actions" },
+  "crm": { "type": "salesforce", "alias": "<sf org alias>", "instanceUrl": "https://<domain>.my.salesforce.com" },
+  "knowledge": ["support/kb"],
+  "_examples": {
+    "azureDevOps": {
+      "code": { "type": "azure-repos", "organization": "<org>", "project": "<project>", "repos": ["<repo>"] },
+      "tracker": { "type": "azure-boards", "organization": "<org>", "project": "<project>" },
+      "wiki": { "type": "azure-wiki", "organization": "<org>", "project": "<project>" },
+      "ci": { "type": "azure-pipelines", "organization": "<org>", "project": "<project>" }
+    }
+  }
+}

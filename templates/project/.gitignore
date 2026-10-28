@@ -1,0 +1,37 @@
+# Local-only repository of a project folder: it makes this folder its own git root (AI tools key
+# project memory and project-scoped MCP servers on it) and keeps a history of the notes.
+# Never add a remote. Only text notes and scripts are tracked; customer files stay untracked.
+
+# links to other checkouts
+/workspace/
+
+# customer evidence and attachments
+**/attachments/
+**/images/
+*.xml
+*.XML
+*.req
+*.REQ
+*.zip
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.htm
+*.html
+feed.txt
+
+# binaries and office files
+*.exe
+*.dll
+*.docx
+*.pptx
+*.xlsx
+
+# secrets and local state
+.env
+.env.*
+**/settings.local.json
+/_inbox/
+**/__pycache__/
+**/node_modules/
