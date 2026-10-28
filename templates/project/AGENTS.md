@@ -15,6 +15,8 @@ what is specific to {{NAME}} and wins on conflict. Keep it short: facts and poin
 ## Code conventions (only where they differ from the kit)
 - Namespace / packages: <...>
 - Lowest release to support: <...>
+- **UI technology:** <Fiori elements | freestyle UI5 | none>, UI5 version <1.xxx>, deployed to
+  <ABAP front-end server | SAP BTP>; app repositories in `repos/<app>`.
 - **ABAP language version:** <leave out to use the kit default: ABAP for Cloud Development where the
   system offers it, cloud-ready Standard ABAP on older releases> or fix it per package:
   <Standard ABAP | ABAP for Cloud Development | both (one source for 7.40 and cloud)>.

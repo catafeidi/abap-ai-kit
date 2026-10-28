@@ -18,7 +18,7 @@ if (-not $Parent) { $Parent = $Kit }
 $Template = "$Kit\templates\project"
 $Target = Join-Path $Parent $Name
 
-foreach ($dir in 'support\cases', 'support\kb', 'products', 'implementations', 'bugs', 'docs', 'tools', '_inbox', '.claude\skills', '.claude\agents') {
+foreach ($dir in 'support\cases', 'support\kb', 'products', 'implementations', 'bugs', 'docs', 'tools', 'repos', '_inbox', '.claude\skills', '.claude\agents') {
     New-Item -ItemType Directory -Force -Path (Join-Path $Target $dir) | Out-Null
 }
 

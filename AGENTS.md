@@ -51,6 +51,10 @@ relative to the kit root.
 | ABAP Cloud, clean core, RAP: **cloud first** wherever the system allows it (BTP, S/4HANA Cloud, S/4HANA 2022+), cloud-ready Standard ABAP on older releases; the project `AGENTS.md` can fix it per package | `guidelines/abap/abap-cloud.md`; check every SAP object with `scripts/abap/released-api.py <OBJECT>`; skills `abap-cloud`, `atc-cloudification`, `abap-cloud-migration` |
 | Where the kit's best practices come from, refreshing them | `SOURCES.md`; `scripts/update-references.py` |
 | Working on a live SAP system (MCP, ADT, RFC) | `guidelines/abap/sap-systems.md` |
+| Building or changing a SAP Fiori / UI5 app | `guidelines/ui5/development.md` (definition of done: UI5 linter 0, QUnit / OPA5, performance checklist, independent review); SAP's rules in skill `ui5-official-guidelines` |
+| Reviewing Fiori / UI5 code | `guidelines/ui5/code-review.md`; agent `ui5-reviewer` |
+| Tiles, target mappings, catalogs, spaces / pages, business roles | `guidelines/ui5/launchpad.md` |
+| Setting up Fiori / UI5 development on a machine (VS Code extensions, UI5 and Fiori MCP servers) | `scripts/setup-fiori.py --project <folder>` |
 | Setting up SAP access on a machine (ADT for VS Code, MCP for Claude / Copilot) | `guidelines/abap/adt-vscode-setup.md` (steps marked AUTO / MANUAL; script `scripts/adt-vscode/setup_adt_vscode.py`) |
 | Keeping project notes, cases, features, bugs | `guidelines/notes.md` |
 | Bringing an existing folder (notes, sources, MCP servers, skills, assistant memory) into a kit project | `guidelines/adopt-project.md` |

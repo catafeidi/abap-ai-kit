@@ -13,7 +13,9 @@ finds things without being told. Create it with `scripts/new-project.ps1 -Name <
   support/
     cases/<case-id>/   one folder per support case: case.md + attachments
     kb/                reusable knowledge: answers, playbooks, root causes
-  products/<product>/  ongoing product development (README, STATUS, decisions, specs, code)
+  products/<product>/  ongoing product development (README, STATUS, decisions, specs)
+  repos/<repo>/        code checkouts (Fiori apps, abapGit repositories): each its own Git
+                       repository with its own remote, ignored by the project notes
   implementations/<topic>/   one folder per big implementation, spike or feature
   bugs/<ticket>-<slug>.md    analysed defects that are not a whole implementation
   docs/                presentations, documents, exported specs
