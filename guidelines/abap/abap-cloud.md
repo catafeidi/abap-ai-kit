@@ -68,8 +68,6 @@ Sources: `SOURCES.md` (Cloudification Repository, SAP clean core guidance, RAP r
   (`PUBLIC_LOCAL_API`) and DDIC tables are blocked in ABAP Cloud objects ("use of CDS entity ... is
   not permitted"), sometimes per element or per association of an otherwise usable view. Check
   with `released-api.py`; the syntax check does not always catch it, activation does.
-- **No `true` / `false` literals** in some view-entity releases: use
-  `cast( case when <cond> then 'X' else ' ' end as abap_boolean )`.
 - **Authorization in the save phase.** A validation that reads a CDS view with access control (for
   example `I_Product`) dumps with `BEHAVIOR_ILLEGAL_STATEMENT` ("AUTHORITY-CHECK(DCL) is not allowed
   with this status"). Read reference data `WITH PRIVILEGED ACCESS`; put `#CHECK` and the DCL on the
@@ -80,8 +78,9 @@ Sources: `SOURCES.md` (Cloudification Repository, SAP clean core guidance, RAP r
   the association in the interface view and follow the path in the projection.
 - **OData bindings** reject non-standard conversion exits on exposed fields (`ALPHA` is fine): cast
   the field to a plain type.
-- **Released RAP BOs check every key in `%target`.** In `CREATE BY \_child`, fill the child's full
-  key (including the parent key) in each `%target` line, not only `%tky` of the parent.
+- **Fill the full child key in `%target`.** In `CREATE BY \_child`, set the child's complete key
+  (parent key included) in each `%target` line, not only `%tky` of the parent: some released BOs
+  check it before they derive it (`I_ProductTP_2` descriptions fail with "key cannot be initial").
 - **Fiori Elements V4 list-report tabs** ignore `@UI.selectionVariant` `filter` and CDS parameters
   for per-tab filtering, and CDS cannot emit `SelectOptions` on some releases: define the
   `UI.SelectionVariant` with `SelectOptions` in the app's local `annotation.xml` (same term and

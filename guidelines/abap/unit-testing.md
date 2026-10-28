@@ -31,8 +31,6 @@ Reference: `skills/sap-abap/references/cheat-sheets/14_ABAP_Unit_Tests.md`.
   (`TYPES ty_result TYPE STRUCTURE FOR READ RESULT <bo>\<entity>`).
 - Messages: text with `%msg->if_message~get_text( )`, number with
   `%msg->if_t100_message~t100key-msgno`.
-- `GET PERMISSIONS ONLY INSTANCE FEATURES` can return no row for a fresh instance: assert "no
-  disabled row", not "row 1 enabled".
 - "Activated successfully" can still leave the test include inactive, and the unit test run then
   reports no classes or misses methods: check the inactive objects and syntax-check the include
   before trusting a green run.
