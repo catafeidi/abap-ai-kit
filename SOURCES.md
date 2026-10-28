@@ -45,3 +45,6 @@ stay with the copies (`license:` in each `SKILL.md`, `LICENSE` files).
 - The other skills of likweitan/abap-skills: overlap with the vendored SAP skills (two skills for one
   topic make the AI choose at random); `released-abap-classes` is replaced by the live
   Cloudification Repository look-up.
+
+## Known errata in vendored material
+- `skills/abap-cloud` (likweitan/abap-skills): says `AUTHORITY-CHECK` is not allowed in ABAP Cloud and recommends `CL_ABAP_AUTHORIZATION`. SAP's cheat sheet `25_Authorization_Checks` allows `AUTHORITY-CHECK OBJECT` (literal object name, no `FOR USER`), and `CL_ABAP_AUTHORIZATION` is not in the Cloudification Repository. Corrected in `guidelines/abap/abap-cloud.md` and `security.md`.

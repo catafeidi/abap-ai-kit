@@ -20,6 +20,14 @@ Deeper material: skills `abap-cloud` (levels, development models, wrapper patter
 `atc-cloudification` (ATC variants per product), `abap-cloud-migration` (classic to cloud),
 `sap-abap` (cheat sheet `19_ABAP_for_Cloud_Development`, released classes, RAP / EML).
 
+**Known errata in the vendored `abap-cloud` skill** (third-party; this page wins):
+- It says `AUTHORITY-CHECK` is not allowed in ABAP Cloud and points to `CL_ABAP_AUTHORIZATION`.
+  Wrong: `AUTHORITY-CHECK OBJECT` is allowed (object name as a literal, no `FOR USER`; SAP cheat
+  sheet `25_Authorization_Checks`), and `CL_ABAP_AUTHORIZATION` is not a released object
+  (`released-api.py`). Prefer CDS access control and RAP authorization control; see
+  `guidelines/abap/security.md`.
+- Check any API the skill names with `released-api.py` before using it.
+
 ## Clean core levels (SAP, replaces the three-tier extensibility model)
 | Level | SAP objects used | Clean core | ATC (clean core check) |
 |---|---|---|---|
