@@ -1,0 +1,43 @@
+name: Bug or wrong advice
+description: A script, hook or install step fails, or the assistant gives wrong ABAP advice because of a rule, guideline or skill.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. Please leave out anything confidential: no customer, system or company names, no credentials.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: The command or prompt, and what you got (error text or the assistant's answer).
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+      description: For ABAP advice, the correct rule and a source if you have one (SAP documentation, Clean ABAP section).
+    validations:
+      required: true
+  - type: input
+    id: file
+    attributes:
+      label: Kit file involved (if known)
+      placeholder: guidelines/abap/abap-cloud.md, hooks/sap-guard.py, skills/clean-abap, ...
+  - type: dropdown
+    id: assistant
+    attributes:
+      label: Assistant
+      multiple: true
+      options: [Claude Code, GitHub Copilot (VS Code), GitHub Copilot CLI, Codex, Other]
+  - type: input
+    id: release
+    attributes:
+      label: SAP release / language version (for ABAP advice)
+      placeholder: 7.40 SP08, S/4HANA 2023, BTP ABAP environment, ...
+  - type: input
+    id: os
+    attributes:
+      label: OS and versions (for scripts)
+      placeholder: Windows 11, PowerShell 5.1, Python 3.11

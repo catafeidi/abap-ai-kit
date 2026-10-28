@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions and ideas
+    url: https://github.com/catafeidi/abap-ai-kit/discussions
+    about: How do I ..., does the kit support ..., show and tell.
+  - name: Security problem
+    url: https://github.com/catafeidi/abap-ai-kit/security/advisories/new
+    about: Report a vulnerability privately (see SECURITY.md).

@@ -1,0 +1,30 @@
+name: Proposal (rule, guideline, skill, script, source)
+description: Suggest a new or better rule, guideline, skill, hook, script or upstream source.
+labels: [proposal]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What the assistant does today
+      description: The behaviour you want to change, ideally with an example prompt.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What it should do
+      description: The rule or behaviour, and where it belongs (see CONTRIBUTING.md, "What goes where").
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source
+      description: SAP documentation, Clean ABAP section, cheat sheet, or another public reference.
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Check
+      options:
+        - label: It does not duplicate an existing skill or guideline (I searched the repository).
+        - label: I am willing to open a pull request for it.

@@ -1,0 +1,45 @@
+# Checks on every pull request and push to main: hook tests, script syntax, secret scan.
+# Pull requests from forks run with a read-only token and no secrets.
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - name: Install gitleaks (used by the hook tests)
+        run: |
+          curl -sSfL https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz | tar -xz gitleaks
+          sudo mv gitleaks /usr/local/bin/
+      - name: Configure git for the test repositories
+        run: |
+          git config --global user.name ci
+          git config --global user.email ci@example.invalid
+      - name: Python scripts compile
+        run: python -m py_compile hooks/*.py hooks/tests/*.py scripts/*.py scripts/abap/*.py scripts/adt-vscode/*.py
+      - name: sap-guard tests
+        run: python hooks/tests/test_sap_guard.py
+      - name: gitleaks hook tests
+        run: python hooks/tests/test_gitleaks_pre_push.py
+
+  secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Secret scan (default rules + .gitleaks.toml)
+        run: |
+          curl -sSfL https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz | tar -xz gitleaks
+          ./gitleaks git --no-banner --redact .
