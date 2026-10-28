@@ -53,6 +53,7 @@ relative to the kit root.
 | Working on a live SAP system (MCP, ADT, RFC) | `guidelines/abap/sap-systems.md` |
 | Setting up SAP access on a machine (ADT for VS Code, MCP for Claude / Copilot) | `guidelines/abap/adt-vscode-setup.md` (steps marked AUTO / MANUAL; script `scripts/adt-vscode/setup_adt_vscode.py`) |
 | Keeping project notes, cases, features, bugs | `guidelines/notes.md` |
+| Bringing an existing folder (notes, sources, MCP servers, skills, assistant memory) into a kit project | `guidelines/adopt-project.md` |
 | Tickets, branches, pull requests, CI, wiki, CRM of a project | `guidelines/integrations.md` + the project's `integrations.json`; skills `work-tracking`, `find-information`, `support-case`; check a machine with `scripts/setup-integrations.py --project <folder>` |
 
 Skills in `skills/` (SKILL.md format) hold the long references: `clean-abap` (full SAP Clean ABAP

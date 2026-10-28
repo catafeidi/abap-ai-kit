@@ -101,6 +101,48 @@ instructions for GitHub Copilot (`~/.copilot`, VS Code user prompt files) and Co
 block of `templates/settings.example.json` into `~/.claude/settings.json` once. Needs Python 3 as
 `python`.
 
+## Quickstart from your AI chat (you already work with an assistant)
+
+Paste one of these into **Claude Code** or **GitHub Copilot Chat in Agent mode** (both run commands
+on your machine; a browser-only chat cannot). Replace the `<...>` parts. Nothing is moved or
+deleted: your current folder stays as it is until you delete it yourself.
+
+**Install the kit and bring your current work into it** (the usual first prompt):
+
+```text
+Install the ABAP AI Kit on this machine and adopt my current work into it.
+1. Clone https://github.com/catafeidi/abap-ai-kit to <D:\ai-kit>, read its README.md and AGENTS.md.
+2. Run scripts\install.ps1 -DryRun, show me what it changes, then run it and wire the hooks
+   (templates/settings.example.json into ~/.claude/settings.json; install gitleaks if missing).
+3. Adopt the folder <C:\path\to\my\work> as project <PROJECTNAME> by following
+   guidelines/adopt-project.md: show me the mapping before copying, copy (never move or delete),
+   keep my MCP servers, skills, agents and assistant memory working, fill the project AGENTS.md
+   from what you find, and ask me only what you cannot find out.
+```
+
+**Adopt another folder later** (kit already installed):
+
+```text
+Adopt <C:\path\to\other\work> into the ABAP AI Kit as project <PROJECTNAME>,
+following %AI_KIT_HOME%\guidelines\adopt-project.md.
+```
+
+**Start a project from scratch:**
+
+```text
+Set up a new ABAP AI Kit project <PROJECTNAME>: run new-project.ps1, then fill its AGENTS.md by
+asking me about the systems, releases, namespace and ticket system.
+```
+
+**Update the kit:**
+
+```text
+Update the ABAP AI Kit: git pull in %AI_KIT_HOME%, show me what changed, re-run install.ps1.
+```
+
+Then start the assistant in the new project folder (`<D:\ai-kit>\<PROJECTNAME>`), so it loads the
+project `AGENTS.md`, its MCP servers and its notes.
+
 ## What is inside
 
 | Path | What | Loaded |
@@ -108,7 +150,7 @@ block of `templates/settings.example.json` into `~/.claude/settings.json` once. 
 | `AGENTS.md` | Entry point: defaults, rules index, which guideline for which task | Always |
 | `rules/` | Short always-on rules: security, decisions, estimation, model choice, sessions and notes, work tracking | Always |
 | `guidelines/abap/` | development (cloud first, definition of done), clean-abap, code-review, unit-testing, architecture, security, abap-cloud, sap-systems, adt-vscode-setup | By task |
-| `guidelines/` | notes (project folder structure), integrations (GitHub / Azure DevOps, Jira / Azure Boards, Confluence, CI, Salesforce) | By task |
+| `guidelines/` | notes (project folder structure), adopt-project (bring existing work into a project), integrations (GitHub / Azure DevOps, Jira / Azure Boards, Confluence, CI, Salesforce) | By task |
 | `skills/` | `clean-abap`, `abap-code-review`, `abap-cloud`, `atc-cloudification`, `abap-cloud-migration`, `sap-abap` (37 SAP cheat sheets), `sap-abap-cds`, `sapui5*`, `sap-fiori-tools`, `sap-cap-capire`, `sap-api-style`, `work-tracking`, `find-information`, `support-case` | When the prompt matches |
 | `agents/abap-reviewer.md` | Read-only independent reviewer | On demand (Claude Code) |
 | `hooks/` | Guards: `rm -rf`, `.env` edits, injection shapes, gitleaks before push, read-only SAP systems, transport releases (with tests) | Every tool call |
