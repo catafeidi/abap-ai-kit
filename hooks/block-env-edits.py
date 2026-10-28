@@ -28,9 +28,4 @@ if re.search(r"(^|[\\/])\.env(\.[^\\/]+)?$", path) and not path.lower().endswith
             "permissionDecision": "deny",
             "permissionDecisionReason": (
                 f"Editing .env files is blocked: keep secrets in a password "
-                f"manager, not a committable file. Blocked path: {path}"
-            ),
-        }
-    }))
-else:
-    print("{}")
+                f"manager,
