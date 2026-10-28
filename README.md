@@ -34,6 +34,7 @@ thinking, and checks it cannot talk its way around.
 | You target 7.40 | Writes 7.40 syntax (no `ENUM`, no `RAISE EXCEPTION NEW`), cloud-ready style | `guidelines/abap/development.md`; optional check: abaplint 7.40 config (GitHub Action, `npx`, or ATC) |
 | A change is "done" | Only with ABAP Unit tests, test doubles for database / RFC / HTTP, checks green with real counts, and an independent review | definition of done |
 | You ask for a review | Findings ranked Blocker / Should fix / Nit, each with file, line and a concrete failure scenario; a read-only reviewer agent gives a second opinion | `abap-code-review` skill + agent, SAP's code review guide |
+| You build a Fiori app | Fiori elements first with annotations in the backend; legacy-free UI5 (async, no globals, no deprecated APIs); UI5 linter 0, QUnit / OPA5, performance checklist, independent review; launchpad content in the right layer | `guidelines/ui5/`, SAP's official UI5 pages, UI5 and Fiori MCP servers |
 | It is about to change a system marked read-only, or release a transport | **Blocked** or asks you first, whatever the model decides (Claude Code) | hook `sap-guard.py` |
 | It is about to push a secret or an internal name | **Blocked** (Claude Code hook; plus a git pre-push hook for any tool) | `gitleaks-pre-push.py` |
 
@@ -81,6 +82,9 @@ and why instead of skipping it.
 | *"Start working on ticket ABC-123"* | Reads the ticket, creates the branch with the key, records open points as linked tickets, reports done / partly / decision needed at the end (`work-tracking`) |
 | *"Read this spec and tell me what to build"* (a .docx) | Converts it without struck-through text and with the reviewers' comments, files it in the topic folder, lists objects and open questions, maps it to the tickets and proposes missing tasks (`spec-intake`) |
 | *"Write the technical documentation for this development"* | Collects the active sources, transport and test results from the system, writes the as-built document in Markdown and builds the .docx on your company template (`tech-doc`) |
+| *"Create a list report for the travel service"* | Uses the Fiori MCP server on your saved SAP system connection, puts the annotations in the backend, adds OPA5 tests, runs the UI5 linter, reviews before calling it done |
+| *"Why is this UI5 app slow?"* / *"is this app legacy-free?"* | Walks SAP's performance checklist and legacy-free rules against the code; UI5 linter and manifest validation through the UI5 MCP server |
+| *"Add a tile for this app to the launchpad"* | Target mapping, tile, catalog, space / page and role, in the transport layer that fits the delivery (`guidelines/ui5/launchpad.md`) |
 | *"Investigate support case 0123456"* | Case folder, every attachment read, known issues searched, root cause with evidence, answer drafted for your approval (`support-case`) |
 
 In Claude Code the independent review runs as a separate read-only agent; in Copilot and Codex
@@ -152,11 +156,12 @@ project `AGENTS.md`, its MCP servers and its notes.
 | `AGENTS.md` | Entry point: defaults, rules index, which guideline for which task | Always |
 | `rules/` | Short always-on rules: security, decisions, estimation, model choice, sessions and notes, work tracking | Always |
 | `guidelines/abap/` | development (cloud first, definition of done), clean-abap, code-review, unit-testing, architecture, security, abap-cloud, sap-systems, adt-vscode-setup | By task |
+| `guidelines/ui5/` | development (Fiori elements first, legacy-free, definition of done), code-review, launchpad | By task |
 | `guidelines/` | notes (project folder structure), adopt-project (bring existing work into a project), integrations (GitHub / Azure DevOps, Jira / Azure Boards, Confluence, CI, Salesforce) | By task |
-| `skills/` | `clean-abap`, `abap-code-review`, `abap-cloud`, `atc-cloudification`, `abap-cloud-migration`, `sap-abap` (37 SAP cheat sheets), `sap-abap-cds`, `sapui5*`, `sap-fiori-tools`, `sap-cap-capire`, `sap-api-style`, `work-tracking`, `find-information`, `support-case`, `spec-intake`, `tech-doc` | When the prompt matches |
-| `agents/abap-reviewer.md` | Read-only independent reviewer | On demand (Claude Code) |
+| `skills/` | `clean-abap`, `abap-code-review`, `abap-cloud`, `atc-cloudification`, `abap-cloud-migration`, `sap-abap` (37 SAP cheat sheets), `sap-abap-cds`, `ui5-official-guidelines` (SAP's UI5 pages), `sapui5*`, `sap-fiori-tools`, `sap-cap-capire`, `sap-api-style`, `work-tracking`, `find-information`, `support-case`, `spec-intake`, `tech-doc` | When the prompt matches |
+| `agents/` | `abap-reviewer`, `ui5-reviewer`: read-only independent reviewers | On demand (Claude Code) |
 | `hooks/` | Guards: `rm -rf`, `.env` edits, injection shapes, gitleaks before push, read-only SAP systems, transport releases (with tests) | Every tool call |
-| `scripts/` | `install.ps1`, `new-project.ps1`, `adt-vscode/setup_adt_vscode.py`, `setup-integrations.py`, `abap/released-api.py`, `docs/docx_to_md.py`, `docs/md_to_docx.py`, `update-references.py` | By you |
+| `scripts/` | `install.ps1`, `new-project.ps1`, `adt-vscode/setup_adt_vscode.py`, `setup-fiori.py`, `setup-integrations.py`, `abap/released-api.py`, `docs/docx_to_md.py`, `docs/md_to_docx.py`, `update-references.py` | By you |
 | `templates/` | Project skeleton, abaplint configs (7.40, ABAP Cloud, Clean ABAP + GitHub workflow), settings example | By scripts |
 
 Skills load when your prompt matches their description, so they cost nothing until needed.
@@ -177,6 +182,7 @@ licences and pinned commits: `SOURCES.md`, `THIRD-PARTY-NOTICES.md`, `SOURCES.js
 | RAP architecture | [SAP Flight reference scenario](https://github.com/SAP-samples/abap-platform-refscen-flight), [RAP workshops](https://github.com/SAP-samples/abap-platform-rap-workshops) |
 | Object orientation | [SAP abap-oo-basics](https://github.com/SAP-samples/abap-oo-basics), [abap_oo_patterns](https://github.com/SchwarzIT/abap_oo_patterns) |
 | Static checks | [abaplint](https://github.com/abaplint/abaplint) (configs in `templates/abaplint/`), [code pal for ABAP](https://github.com/SAP/code-pal-for-abap) |
+| UI5 / Fiori | [UI5 official documentation](https://github.com/UI5/docs) (CC-BY-SA-4.0): best practices, performance checklist, CSP, security, accessibility, testing, vendored; [UI5 MCP server](https://github.com/UI5/mcp-server) and [Fiori MCP server](https://github.com/SAP/open-ux-tools/tree/main/packages/fiori-mcp-server), [UI5 linter](https://github.com/UI5/linter); [Fiori elements feature showcase](https://github.com/SAP-samples/abap-platform-fiori-feature-showcase); [Fiori design guidelines](https://experience.sap.com/fiori-design-web/) |
 
 `python scripts/update-references.py` shows what changed upstream; `--apply` takes it.
 

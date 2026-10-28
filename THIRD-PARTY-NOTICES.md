@@ -10,6 +10,7 @@ keeps its licence. Exact source commits: `SOURCES.json`.
 | ABAP code review guide | `skills/abap-code-review/reference/ABAPCodeReview.md` | [SAP/styleguides](https://github.com/SAP/styleguides), same holders | CC-BY-3.0 | `skills/abap-code-review/reference/LICENSE-CC-BY-3.0.txt` |
 | ABAP cheat sheets | `skills/sap-abap/references/cheat-sheets/` | [SAP-samples/abap-cheat-sheets](https://github.com/SAP-samples/abap-cheat-sheets), (c) SAP SE or an SAP affiliate company | Apache-2.0 | https://www.apache.org/licenses/LICENSE-2.0 |
 | SAP development skills | `skills/sap-abap`, `sap-abap-cds`, `sap-api-style`, `sap-cap-capire`, `sap-fiori-tools`, `sapui5`, `sapui5-cli`, `sapui5-linter` | [secondsky/sap-skills](https://github.com/secondsky/sap-skills) | GPL-3.0 | `LICENSE` in each skill folder |
+| UI5 official guidelines (best practices, performance checklist, CSP, browser security, accessibility, testing) | `skills/ui5-official-guidelines/reference/` | [UI5/docs](https://github.com/UI5/docs), (c) SAP SE or an SAP affiliate company and OpenUI5-docs contributors | CC-BY-SA-4.0 (REUSE annotation; the repository LICENSE file is CC-BY-4.0); verbatim copies | `skills/ui5-official-guidelines/reference/LICENSE-CC-BY-SA-4.0.txt` |
 | ABAP Cloud skills | `skills/abap-cloud`, `abap-cloud-migration`, `atc-cloudification` | [likweitan/abap-skills](https://github.com/likweitan/abap-skills), (c) 2026 Lik Wei | MIT | `LICENSE` in each skill folder |
 
 The Cloudification Repository ([SAP/abap-atc-cr-cv-s4hc](https://github.com/SAP/abap-atc-cr-cv-s4hc),

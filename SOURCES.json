@@ -150,6 +150,67 @@
         }
       ],
       "updated": "2026-10-28"
+    },
+    {
+      "name": "ui5-docs",
+      "repo": "https://github.com/UI5/docs",
+      "license": "CC-BY-SA-4.0 (REUSE annotation; repository LICENSE file: CC-BY-4.0)",
+      "ref": "5a417205ac026627d07d7077973a77f5e24568b3",
+      "files": [
+        {
+          "from": "docs/03_Get-Started/best-practices-for-developers-28fcd55.md",
+          "to": "skills/ui5-official-guidelines/reference/best-practices-for-developers.md"
+        },
+        {
+          "from": "docs/03_Get-Started/performance-checklist-9c6400e.md",
+          "to": "skills/ui5-official-guidelines/reference/performance-checklist.md"
+        },
+        {
+          "from": "docs/05_Developing_Apps/accessibility-03b914b.md",
+          "to": "skills/ui5-official-guidelines/reference/accessibility.md"
+        },
+        {
+          "from": "docs/05_Developing_Apps/browser-security-91f3b66.md",
+          "to": "skills/ui5-official-guidelines/reference/browser-security.md"
+        },
+        {
+          "from": "docs/05_Developing_Apps/content-security-policy-fe1a6db.md",
+          "to": "skills/ui5-official-guidelines/reference/content-security-policy.md"
+        },
+        {
+          "from": "docs/04_Essentials/testing-7cdee40.md",
+          "to": "skills/ui5-official-guidelines/reference/testing.md"
+        },
+        {
+          "from": "docs/04_Essentials/unit-testing-with-qunit-09d145c.md",
+          "to": "skills/ui5-official-guidelines/reference/unit-testing-with-qunit.md"
+        },
+        {
+          "from": "docs/04_Essentials/test-starter-032be2c.md",
+          "to": "skills/ui5-official-guidelines/reference/test-starter.md"
+        },
+        {
+          "from": "LICENSES/CC-BY-SA-4.0.txt",
+          "to": "skills/ui5-official-guidelines/reference/LICENSE-CC-BY-SA-4.0.txt"
+        },
+        {
+          "from": "docs/05_Developing_Apps/performance-speed-up-your-app-408b40e.md",
+          "to": "skills/ui5-official-guidelines/reference/performance-speed-up-your-app.md"
+        },
+        {
+          "from": "docs/03_Get-Started/use-asynchronous-loading-676b636.md",
+          "to": "skills/ui5-official-guidelines/reference/use-asynchronous-loading.md"
+        },
+        {
+          "from": "docs/03_Get-Started/make-your-app-csp-compliant-1f81a09.md",
+          "to": "skills/ui5-official-guidelines/reference/make-your-app-csp-compliant.md"
+        },
+        {
+          "from": "docs/04_Essentials/concept-and-basic-setup-22f50c0.md",
+          "to": "skills/ui5-official-guidelines/reference/test-starter-concept-and-setup.md"
+        }
+      ],
+      "updated": "2026-10-28"
     }
   ]
 }
