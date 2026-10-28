@@ -7,6 +7,7 @@
 !/.gitleaksignore
 !/.gitleaks.toml
 !/README.md
+!/CONTRIBUTING.md
 !/SOURCES.md
 !/LICENSE
 !/THIRD-PARTY-NOTICES.md
