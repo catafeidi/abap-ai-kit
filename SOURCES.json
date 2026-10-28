@@ -192,6 +192,22 @@
         {
           "from": "LICENSES/CC-BY-SA-4.0.txt",
           "to": "skills/ui5-official-guidelines/reference/LICENSE-CC-BY-SA-4.0.txt"
+        },
+        {
+          "from": "docs/05_Developing_Apps/performance-speed-up-your-app-408b40e.md",
+          "to": "skills/ui5-official-guidelines/reference/performance-speed-up-your-app.md"
+        },
+        {
+          "from": "docs/03_Get-Started/use-asynchronous-loading-676b636.md",
+          "to": "skills/ui5-official-guidelines/reference/use-asynchronous-loading.md"
+        },
+        {
+          "from": "docs/03_Get-Started/make-your-app-csp-compliant-1f81a09.md",
+          "to": "skills/ui5-official-guidelines/reference/make-your-app-csp-compliant.md"
+        },
+        {
+          "from": "docs/04_Essentials/concept-and-basic-setup-22f50c0.md",
+          "to": "skills/ui5-official-guidelines/reference/test-starter-concept-and-setup.md"
         }
       ],
       "updated": "2026-10-28"

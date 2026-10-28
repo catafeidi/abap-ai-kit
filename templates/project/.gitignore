@@ -36,3 +36,6 @@ feed.txt
 /_inbox/
 **/__pycache__/
 **/node_modules/
+
+# backups written by the kit setup scripts
+*.bak-*

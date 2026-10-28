@@ -1,7 +1,8 @@
 # SAP Fiori launchpad content
 
-How an app reaches users. Applies to the ABAP front-end server launchpad; for SAP Build Work Zone
-the same objects exist as content in the site manager.
+How an app reaches users. Applies to the ABAP front-end server launchpad. In SAP Build Work Zone
+the target mapping comes from the inbounds in the app's `manifest.json`, and catalogs, spaces and
+roles are content of the site manager.
 
 ## The chain
 `app (BSP / repository)` -> **target mapping** (semantic object + action -> app, parameters) ->
@@ -21,7 +22,8 @@ spaces) -> user.
     cross-client, workbench transport);
   - specific to one customer client: the **customizing layer** (CUST, client-specific, customizing
     transport).
-  Do not mix both for the same catalog; content in CUST overrides CONF for that client.
+  Content in CUST overrides CONF for that client. Customers adapting SAP's delivered (CONF) catalogs
+  in CUST is normal; for your own content pick one layer per catalog and keep to it.
 - **Maintain with the content tools** of your release (launchpad content manager and designer for
   catalogs, the space / page apps for spaces), not by editing tables.
 - **Transport every object** (app, catalog, target mapping, space, page, role) in the same release

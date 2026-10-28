@@ -12,7 +12,7 @@ stay with the copies (`license:` in each `SKILL.md`, `LICENSE` files).
 | [SAP/styleguides](https://github.com/SAP/styleguides) - Clean ABAP | SAP style guides terms | `skills/clean-abap/reference/CleanABAP.md` (+ copy in `sap-abap`) | `guidelines/abap/clean-abap.md`, reviews |
 | [SAP-samples/abap-cheat-sheets](https://github.com/SAP-samples/abap-cheat-sheets) | Apache-2.0 | `skills/sap-abap/references/cheat-sheets/` (37 sheets) | syntax per release, OO, design patterns, RAP/EML, ABAP Cloud, unit tests |
 | [secondsky/sap-skills](https://github.com/secondsky/sap-skills) | GPL-3.0 | skills `sap-abap`, `sap-abap-cds`, `sap-api-style`, `sap-cap-capire`, `sap-fiori-tools`, `sapui5`, `sapui5-cli`, `sapui5-linter` | SAP development references |
-| [UI5/docs](https://github.com/UI5/docs) - official OpenUI5 documentation | CC-BY-SA-4.0 | `skills/ui5-official-guidelines/reference/` (8 pages) | `guidelines/ui5/development.md`, `code-review.md` |
+| [UI5/docs](https://github.com/UI5/docs) - official OpenUI5 documentation | CC-BY-SA-4.0 | `skills/ui5-official-guidelines/reference/` (12 pages) | `guidelines/ui5/development.md`, `code-review.md` |
 | [likweitan/abap-skills](https://github.com/likweitan/abap-skills) | MIT | skills `abap-cloud`, `abap-cloud-migration`, `atc-cloudification` | clean core levels A-D, wrapper pattern, ATC cloud readiness / clean core variants, classic-to-cloud migration |
 
 ## Queried live

@@ -17,7 +17,14 @@ other documentation pages: open them on https://ui5.sap.com (SAPUI5) or https://
 | `reference/content-security-policy.md` | anything that loads code, uses inline scripts, `eval`, or third-party libraries |
 | `reference/browser-security.md` | output of untrusted data, HTML content, URLs, clickjacking |
 | `reference/accessibility.md` | labels, keyboard handling, screen readers, themes |
-| `reference/testing.md`, `reference/unit-testing-with-qunit.md`, `reference/test-starter.md` | writing QUnit / OPA5 tests and the test set-up |
+| `reference/use-asynchronous-loading.md` | bootstrap, component and module loading |
+| `reference/performance-speed-up-your-app.md` | the details behind each performance checklist item |
+| `reference/make-your-app-csp-compliant.md` | making existing code CSP compliant |
+| `reference/testing.md`, `reference/unit-testing-with-qunit.md`, `reference/test-starter.md`, `reference/test-starter-concept-and-setup.md` | writing QUnit / OPA5 tests and the test set-up |
+
+Relative links inside the pages (`xxx-1a2b3c4.md`) point to documentation pages that are not
+copied: open them on the online documentation by title, or ask the UI5 MCP server
+(`get_guidelines`) or the Fiori MCP server (`search_docs`).
 
 Tools that check these rules: the UI5 linter (`npx @ui5/linter`, or the UI5 MCP server tool
 `run_ui5_linter`), manifest validation (`run_manifest_validation`), the UI5 Support Assistant in
