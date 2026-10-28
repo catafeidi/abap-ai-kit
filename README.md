@@ -2,11 +2,12 @@
 
 <h1 align="center">ABAP AI Kit</h1>
 
-<p align="center"><b>Make Claude, Copilot and Codex write ABAP like a senior developer.</b></p>
+<p align="center"><b>Make Claude, Copilot and Codex write ABAP and Fiori like a senior SAP developer.</b></p>
 
 <p align="center">
-Clean ABAP, clean core (levels A-D), ABAP Cloud, independent code review and unit tests with
-test doubles: as rules your AI follows on every prompt, with guardrails it cannot skip.
+Clean ABAP, clean core (levels A-D), ABAP Cloud, Fiori elements, legacy-free UI5 and the
+launchpad, independent code review and unit tests with test doubles: as rules your AI follows on
+every prompt, with guardrails it cannot skip.
 </p>
 
 <p align="center">
