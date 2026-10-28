@@ -27,6 +27,7 @@ Set up or check a machine: `python <kit>\scripts\setup-integrations.py --project
 | wiki | `azure-wiki` | Azure DevOps MCP or `az devops wiki` | `az devops wiki page show/create` |
 | ci | `github-actions` | `gh` | `gh run list/view --log-failed`, `gh workflow run` |
 | ci | `azure-pipelines` | Azure DevOps MCP or `az pipelines` | `az pipelines runs list/show` |
+| test | `azure-test-plans` | Azure DevOps MCP (`testplan` tools) | list plans and suites, create test cases, results of a build |
 | crm | `salesforce` | `sf` CLI (alias from the file) | `sf org list`, `sf data query -o <alias> -q "SELECT ... FROM Case WHERE CaseNumber='...'"` |
 
 **Azure DevOps:** Microsoft's official MCP server. Preferred: remote
