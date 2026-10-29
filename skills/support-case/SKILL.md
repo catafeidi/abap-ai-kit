@@ -21,8 +21,11 @@ one; this is the generic method. Notes structure: kit `guidelines/notes.md`. CRM
 5. **Root cause with evidence:** quote the log line, field or source line; separate
    *established* from *not verified* in `case.md`.
 6. **Deliver:** what the case is, why it looks like that, root cause, what to tell the customer
-   (numbered steps), what is not verified. Draft any reply or internal note and send it only
-   after the user agrees, through the channel the project names.
+   (numbered steps), what is not verified. Always write the reply to the customer as a file
+   in the case folder (`reply-draft-<date>.txt`), in the language of the thread, plus an
+   English copy when the thread is in another language. Files to send are attached to the
+   email itself, never only uploaded to the case. Send a reply or internal note only after
+   the user agrees, through the channel the project names; record what was sent in `case.md`.
 7. **Knowledge:** reusable root cause -> kb entry; anonymised if it leaves the project (no case
    numbers, names, hosts, raw messages). A product defect -> tracker ticket (`work-tracking`).
 8. Update `case.md` every visit (status, last read, open points).
