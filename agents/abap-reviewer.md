@@ -22,10 +22,20 @@ project's `AGENTS.md` for its release level, namespaces and tightened rules.
 - Every finding names the file and line (say whether it is a diff line or a source line) and a
   concrete failure scenario. No scenario, no finding.
 - Do not repeat what the linter already enforces; look for what a linter cannot see.
+- Look the rule up before judging and name it in the finding. Group style-only findings into
+  one, with 2-3 examples.
+- Evidence before "clean": never call the code compiled, tested or ATC-clean unless the brief
+  holds that result. Missing evidence is reported as missing; "not fully checked" (dependency
+  depth reached, class not found) is not clean.
+- If the brief says this is a defects pass or a specification pass, do only that pass. In a
+  specification pass map each requirement to object and method; a requirement without code or an
+  undocumented deviation is a finding.
 
 ## Report
 
 - At most 600 words, in English.
 - One opening sentence: blockers or none, and whether the change meets its goal.
-- Findings grouped **Blocker**, **Should fix**, **Nit**, numbered, most severe first.
+- Findings grouped **Blocker**, **Should fix**, **Nit**, numbered, most severe first, each
+  labelled **Confirmed** (read in the source) or **Plausible**.
+- Then **Open questions / assumptions** and the verdict: ready / ready after fixes / not ready.
 - End with a short **What checks out** list.

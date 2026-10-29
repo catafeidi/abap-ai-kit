@@ -32,8 +32,9 @@ Commit the notes now and then (`git add -A; git commit -m "notes"`).
 - One topic, one folder, one `README.md` that says goal, status, ticket keys and where the code is.
 - Decisions go into a decisions file (`DECISIONS.md` or ADRs) with the reason; settled decisions
   are not re-opened without new facts.
-- A support case gets `case.md` from the case template: symptoms, system, analysis, root cause,
-  answer sent. When the root cause is reusable, add or update an entry in `support/kb/`.
+- A support case gets `case.md` from the case template: last read, problems, symptoms,
+  established vs not verified, root cause, notes and replies sent. When the root cause is
+  reusable, add or update an entry in `support/kb/`.
 - Notes say what the code or the ticket does not: facts learned on the system, why a choice was
   made, what was tried and failed.
 - No secrets, no customer passwords; customer data only as far as the analysis needs it.
