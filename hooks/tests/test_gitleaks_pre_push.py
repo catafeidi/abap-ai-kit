@@ -39,6 +39,14 @@ with open(os.path.join(kit_home, "local", "gitleaks-internal.toml"), "w") as han
 subprocess.run(["git", "-C", kit_home, "remote", "add", "origin", "https://example.invalid/kit.git"], check=True)
 temp_clone = make_repo("mentions ACME\n")
 subprocess.run(["git", "-C", temp_clone, "remote", "add", "origin", "https://example.invalid/kit.git"], check=True)
+# SAP archive keys (archive file number + archiving object) in ABAP are not secrets (gitleaks-sap.toml)
+# (assembled at run time, so this file itself does not trip the scanner)
+ARCHIVE_KEY = "iv_archiv" + "_key = "
+archive_key_repo = make_repo(ARCHIVE_KEY + "'02FI_" + "DOCUMNT' iv_text = 'not read' iv_count = 1.\n"
+                             + ARCHIVE_KEY + "'000123-001FI_" + "DOCUMNT'.\n")
+# ... but the allowlist must not hide a real key on another line of the same file
+archive_and_secret_repo = make_repo(ARCHIVE_KEY + "'02FI_" + "DOCUMNT'.\n"
+                                    + "aws_access_key_id = " + "AKIA" + "Z7Q3" + "EXAMPLE4XYZW" + "\n")
 other_repo = make_repo("mentions ACME\n")
 subprocess.run(["git", "-C", other_repo, "remote", "add", "origin", "https://example.invalid/other.git"], check=True)
 
@@ -57,6 +65,8 @@ CASES = [  # (command, working directory of the hook, expected decision)
     (f"cd {clean} && git push", internal_repo, "allow"),     # ... only in the repository that has it
     (f"cd {temp_clone} && git push", clean, "deny"),         # another clone of the kit: kit overlay rule applies
     (f"cd {other_repo} && git push", clean, "allow"),        # an unrelated repository: it does not
+    (f"cd {archive_key_repo} && git push", clean, "allow"),  # SAP archive keys are allowed
+    (f"cd {archive_and_secret_repo} && git push", clean, "deny"),  # a real key next to one is not
 ]
 fails = 0
 for command, cwd, expected in CASES:

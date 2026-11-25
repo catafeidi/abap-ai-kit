@@ -9,7 +9,7 @@ model's habits and loses under load; a hook runs every time.
 | `block-rm-rf.py` | PreToolUse / Bash | hard-deny `rm -rf` at a command boundary; delete specific paths instead |
 | `injection-guard.py` | PreToolUse / Bash | ask-confirm on the four injection/exfil shapes (remote-pipe-to-shell, remote-pipe-to-interpreter, inline `ANTHROPIC_BASE_URL`, secret-source + outbound-sink) |
 | `block-env-edits.py` | PreToolUse / Edit\|Write | hard-deny edits to `.env` files, exempting `.env.example`/`.template`/`.sample` |
-| `gitleaks-pre-push.py` | PreToolUse / Bash | run gitleaks on the commits being pushed; deny on a finding, ask if gitleaks is missing or on a force push |
+| `gitleaks-pre-push.py` | PreToolUse / Bash | run gitleaks on the commits being pushed; deny on a finding, ask if gitleaks is missing or on a force push; uses `gitleaks-sap.toml` (default rules + narrow SAP allowlists such as archive keys) unless the repository has its own `.gitleaks.toml` or `GITLEAKS_CONFIG` is set |
 | `sap-guard.py` | PreToolUse / `mcp__.*` and Bash | SAP systems: deny edit/create/delete on systems a project marks read-only in `<project>/.claude/sap-guard.json` (vsp `SAP` tool and ADT MCP destinations), ask on RFC calls there; ask on every transport release (release FMs, ADT release tools, `*_release.py`). Tests: `python hooks/tests/test_sap_guard.py` |
 
 Shell guards are wired on `Bash|PowerShell`: both shell tools reach the same commands.

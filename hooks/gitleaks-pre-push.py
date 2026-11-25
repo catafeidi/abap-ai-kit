@@ -94,6 +94,12 @@ gitleaks_cmd = ["gitleaks", "detect", "--no-banner", "--redact",
                 "--exit-code", "1", "--source", "."]
 if log_opts:
     gitleaks_cmd.append(f"--log-opts={log_opts}")
+# The default rules plus narrow SAP allowlists (archive keys), unless the repository has its own
+# .gitleaks.toml or GITLEAKS_CONFIG is set: those keep priority.
+_sap_config = os.path.join(os.path.dirname(os.path.abspath(__file__)), "gitleaks-sap.toml")
+if (os.path.isfile(_sap_config) and not os.environ.get("GITLEAKS_CONFIG")
+        and not os.path.isfile(os.path.join(cwd or ".", ".gitleaks.toml"))):
+    gitleaks_cmd += ["--config", _sap_config]
 
 try:
     res = subprocess.run(gitleaks_cmd, capture_output=True, text=True, timeout=45, cwd=cwd)
